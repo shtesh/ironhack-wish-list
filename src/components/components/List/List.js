@@ -1,15 +1,20 @@
 import React from "react";
 import ListItem from "../ListItem/ListItem";
+import Button from "../Button/Button";
 
-function List({ wishes, onClick }) {
-  console.log("List wishes", wishes);
-  return (
-    <div>
-      {wishes.map((wish, idx) => (
-        <ListItem key={idx} data={wish} onRemove={onClick} />
-      ))}
-    </div>
-  );
+let id = 0;
+
+function List({ wishes, handleCurrentWishes }) {
+  return wishes.map((wish) => {
+    return (
+      <div>
+        <ListItem wish={wish} />
+        <Button wish={wish} handleCurrentWishes={handleCurrentWishes}>
+          remove
+        </Button>
+      </div>
+    );
+  });
 }
 
 export default List;

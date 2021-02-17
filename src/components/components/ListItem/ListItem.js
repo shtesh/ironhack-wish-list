@@ -1,11 +1,11 @@
 import React from "react";
-import Button from "../Button/Button";
 
-function ListItem({ data, onRemove }) {
+let id = 0;
+
+function ListItem({ wish }) {
   return (
     <div className="card">
-      <p>Wish: {data}</p>
-      <Button onClick={onRemove} wish={data} />
+      <p key={id++}>{wish}</p>
     </div>
   );
 }

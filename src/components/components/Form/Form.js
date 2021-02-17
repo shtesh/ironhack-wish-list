@@ -1,20 +1,19 @@
 import React from "react";
+import List from "../List/List";
 
-
-function Form({ onSubmit, children }) {
-  const [wish, setWish] = React.useState("");
+function Form({ handleWish }) {
+  const [formState, setFormState] = React.useState("");
 
   const handleChange = (event) => {
     const { value } = event.target;
-    setWish(value);
-    console.log(value)
+    setFormState(value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const newWish = formState;
-    onSubmit(wish);
-    setWish("");
+    handleWish(newWish);
+    setFormState("");
   };
 
   return (
@@ -23,10 +22,11 @@ function Form({ onSubmit, children }) {
       <input
         type="text"
         name="wish"
-        value={wish}
+        id="wish"
+        value={formState}
         onChange={handleChange}
       />
-      <button type="submit">Submit a wish</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

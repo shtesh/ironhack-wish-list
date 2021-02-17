@@ -1,9 +1,9 @@
 import React from "react";
 
-function Button({ onClick, wish }) {
+function Button({ handleCurrentWishes, wish }) {
   return (
-    <button type="button" onClick={() => onClick(wish)}>
-      Delete
+    <button className="button" onClick={() => handleCurrentWishes(wish)}>
+      remove
     </button>
   );
 }
