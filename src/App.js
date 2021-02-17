@@ -1,33 +1,24 @@
 import React from "react";
 import List from "./components/List/List";
-import ListItem from "./components/ListItem/ListItem";
-import Button from "./components/Button/Button";
 import Form from "./components/Form/Form";
 
-const initialState = [];
-
 function App() {
-  const [wishes, setWishes] = React.useState(initialState);
-
-  function handleWish(newWish) {
-    setWishes(wishes.concat(newWish));
-  }
+  const [wishes, setWishes] = React.useState([]);
+  const remove = (value) => {
+    const newList = [...wishes];
+    console.log("newListBefore", newList);
+    const newState = newList.filter((wish) => wish != value);
+    setWishes(newState);
+    console.log(wishes);
+  };
+  const addWish = (value) => {
+    setWishes([...wishes, value]);
+  };
+  console.log(wishes);
   return (
     <div className="container">
-      <h1>App</h1>
-      <div className="cards-container">
-        <List wishes={wishes} />
-        <div className="card">
-          <button className="button">remove</button>
-        </div>
-        <div className="card">
-          <button className="button">remove</button>
-        </div>
-        <div className="card">
-          <button className="button">remove</button>
-        </div>
-      </div>
-      <Form handleWish={handleWish} />
+      <List wishes={wishes} onClick={remove} />
+      <Form onSubmit={addWish} />
     </div>
   );
 }
